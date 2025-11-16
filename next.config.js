@@ -2,6 +2,15 @@
 const nextConfig = {
   reactCompiler: true,
   
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
+  },
+  
   redirects() {
     return [
       {

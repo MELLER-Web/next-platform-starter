@@ -51,6 +51,58 @@ In local development, optimization is performed locally without automatic format
 detection, so format is set to WebP.
 `;
 
+// Unsplash photo IDs - these are specific photos that work well
+const unsplashPhotos = [
+    {
+        id: '1522771739844-6a9f1d926463',
+        alt: 'Mountain landscape',
+        photographer: 'Casey Horner',
+        photographerUrl: 'https://unsplash.com/@mischievous_penguins',
+        photoUrl: 'https://unsplash.com/photos/mountain-landscape-with-snow-covered-peaks-1522771739844-6a9f1d926463'
+    },
+    {
+        id: '1506905925346-21bda4d32df4',
+        alt: 'Ocean waves',
+        photographer: 'Roberto Nickson',
+        photographerUrl: 'https://unsplash.com/@rpnickson',
+        photoUrl: 'https://unsplash.com/photos/ocean-waves-1506905925346-21bda4d32df4'
+    },
+    {
+        id: '1519681393784-d120267933ba',
+        alt: 'Forest path',
+        photographer: 'Luca Bravo',
+        photographerUrl: 'https://unsplash.com/@lucabravo',
+        photoUrl: 'https://unsplash.com/photos/forest-path-1519681393784-d120267933ba'
+    }
+];
+
+const unsplashImageSnippet = `
+You can also use images from Unsplash with Netlify Image CDN. Simply use the Unsplash image URL as the source.
+
+~~~jsx
+import Image from 'next/image';
+
+// Using Unsplash photo ID
+<Image 
+  src="https://images.unsplash.com/photo-1522771739844-6a9f1d926463" 
+  alt="Mountain landscape" 
+  width={800}
+  height={600}
+/>
+~~~
+
+The Netlify Image CDN will automatically optimize Unsplash images just like local images.
+`;
+
+const getUnsplashSrcSet = (photoId) => {
+    const unsplashUrl = `https://images.unsplash.com/photo-${photoId}`;
+    return [640, 1280, 2048]
+        .map((size) => {
+            return `/.netlify/images?url=${encodeURIComponent(unsplashUrl)}&w=${size}${forceWebP ? '&fm=webp' : ''} ${size}w`;
+        })
+        .join(', ');
+};
+
 export default function Page() {
     return (
         <div className="flex flex-col gap-12 sm:gap-16">
@@ -106,6 +158,72 @@ export default function Page() {
                             <ImageWithSizeOverlay
                                 srcSet={sampleImageSrcSet}
                                 sizes={sampleImageSrcSet}
+                                overlayPosition="right"
+                            />
+                        </div>
+                    </div>
+                    <div className="relative h-2 col-start-1 row-start-1 overflow-hidden opacity-0 resize-x diff-resizer z-1 min-w-4 cursor-ew-resize top-1/2"></div>
+                </figure>
+            </section>
+            <section>
+                <h2 className="mb-6">Using Unsplash photos</h2>
+                <Markdown content={unsplashImageSnippet} className="mb-8" />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {unsplashPhotos.map((photo) => {
+                        const unsplashUrl = `https://images.unsplash.com/photo-${photo.id}`;
+                        return (
+                            <figure key={photo.id} className="flex flex-col">
+                                <div className="relative overflow-hidden border-2 border-white rounded-lg aspect-4/3">
+                                    <Image
+                                        src={unsplashUrl}
+                                        alt={photo.alt}
+                                        fill={true}
+                                        style={{ objectFit: 'cover' }}
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                    />
+                                </div>
+                                <figcaption className="mt-2 text-sm italic">
+                                    Photo by{' '}
+                                    <a 
+                                        href={`${photo.photographerUrl}?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash`}
+                                        className="underline hover:no-underline"
+                                    >
+                                        {photo.photographer}
+                                    </a>{' '}
+                                    on{' '}
+                                    <a 
+                                        href={`${photo.photoUrl}?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash`}
+                                        className="underline hover:no-underline"
+                                    >
+                                        Unsplash
+                                    </a>
+                                </figcaption>
+                            </figure>
+                        );
+                    })}
+                </div>
+            </section>
+            <section>
+                <h2 className="mb-6">Unsplash images: Original vs. optimized</h2>
+                <p className="mb-8">
+                    Here's a comparison showing how Unsplash images are optimized through Netlify Image CDN.
+                </p>
+                <figure
+                    className="relative grid w-full overflow-hidden border-2 border-white rounded-lg select-none diff aspect-3/2"
+                    tabIndex="0"
+                >
+                    <div className="relative col-start-1 row-start-1 overflow-hidden border-r-2 z-1 border-r-white diff-item-1">
+                        <div>
+                            <ImageWithSizeOverlay 
+                                src={`https://images.unsplash.com/photo-${unsplashPhotos[0].id}`} 
+                            />
+                        </div>
+                    </div>
+                    <div className="relative col-start-1 row-start-1 diff-item-2" tabIndex="0">
+                        <div>
+                            <ImageWithSizeOverlay
+                                srcSet={getUnsplashSrcSet(unsplashPhotos[0].id)}
+                                sizes={getUnsplashSrcSet(unsplashPhotos[0].id)}
                                 overlayPosition="right"
                             />
                         </div>
