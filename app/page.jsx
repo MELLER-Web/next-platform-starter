@@ -51,36 +51,38 @@ const aboutImage = {
 
 export default function Page() {
     return (
-        <div className="flex flex-col gap-8 sm:gap-12 py-6 sm:py-8">
+        <div className="flex flex-col gap-12 sm:gap-16 lg:gap-20 py-8 sm:py-12 lg:py-16">
             {/* Hero Section */}
-            <section className="text-center py-8 sm:py-12">
-                <div className="relative w-full max-w-4xl mx-auto mb-6 sm:mb-8 aspect-16/9 overflow-hidden rounded-lg border-2 border-black min-h-[250px]">
+            <section className="text-center py-8 sm:py-12 lg:py-16 animate-fade-in-up">
+                <div className="relative w-full max-w-5xl mx-auto mb-8 sm:mb-10 lg:mb-12 aspect-16/9 overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-2xl min-h-[300px] sm:min-h-[400px] group">
                     <Image
                         src={`https://images.unsplash.com/photo-${heroImage.id}`}
                         alt={heroImage.alt}
                         fill={true}
                         style={{ objectFit: 'cover' }}
-                        sizes="(max-width: 1024px) 100vw, 1024px"
+                        sizes="(max-width: 1024px) 100vw, 1280px"
                         priority
                         unoptimized
+                        className="transition-transform duration-700 group-hover:scale-105"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-neutral-900/20 to-transparent" />
                 </div>
-                <h1 className="mb-4 sm:mb-6">Professionele Kappers</h1>
-                <p className="mb-6 sm:mb-8 text-base sm:text-lg max-w-2xl mx-auto">
+                <h1 className="mb-6 sm:mb-8 lg:mb-10">Professionele Kappers</h1>
+                <p className="mb-8 sm:mb-10 lg:mb-12 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed">
                     Wij zorgen voor de perfecte look. Van klassieke knippen tot moderne stijlen, 
                     wij maken u klaar voor elke gelegenheid.
                 </p>
-                <a href="#contact" className="btn btn-lg">
+                <a href="#contact" className="btn btn-lg animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
                     Maak een Afspraak
                 </a>
             </section>
 
             {/* Diensten Section */}
-            <section id="diensten" className="py-6 sm:py-8">
-                <h2 className="mb-6 sm:mb-8 text-center">Onze Diensten</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                    <Card title="Herenknippen">
-                        <div className="relative w-full aspect-4/3 mb-4 overflow-hidden rounded border border-black min-h-[200px]">
+            <section id="diensten" className="py-8 sm:py-12 lg:py-16">
+                <h2 className="mb-10 sm:mb-12 lg:mb-16 text-center">Onze Diensten</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
+                    <Card title="Herenknippen" className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                        <div className="relative w-full aspect-4/3 mb-5 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 shadow-lg group/image min-h-[220px]">
                             <Image
                                 src={`https://images.unsplash.com/photo-${serviceImages.herenknippen.id}`}
                                 alt={serviceImages.herenknippen.alt}
@@ -88,15 +90,17 @@ export default function Page() {
                                 style={{ objectFit: 'cover' }}
                                 sizes="(max-width: 768px) 100vw, 50vw"
                                 unoptimized
+                                className="transition-transform duration-500 group-hover/image:scale-110"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/40 to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-500" />
                         </div>
-                        <p className="text-sm sm:text-base">
+                        <p className="text-sm sm:text-base leading-relaxed">
                             Professioneel herenknippen met aandacht voor detail. 
                             Wij zorgen voor een perfecte pasvorm en stijl die bij u past.
                         </p>
                     </Card>
-                    <Card title="Damesknippen">
-                        <div className="relative w-full aspect-4/3 mb-4 overflow-hidden rounded border border-black min-h-[200px]">
+                    <Card title="Damesknippen" className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+                        <div className="relative w-full aspect-4/3 mb-5 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 shadow-lg group/image min-h-[220px]">
                             <Image
                                 src={`https://images.unsplash.com/photo-${serviceImages.damesknippen.id}`}
                                 alt={serviceImages.damesknippen.alt}
@@ -104,15 +108,17 @@ export default function Page() {
                                 style={{ objectFit: 'cover' }}
                                 sizes="(max-width: 768px) 100vw, 50vw"
                                 unoptimized
+                                className="transition-transform duration-500 group-hover/image:scale-110"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/40 to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-500" />
                         </div>
-                        <p className="text-sm sm:text-base">
+                        <p className="text-sm sm:text-base leading-relaxed">
                             Moderne en klassieke damesknippen. Van kort tot lang, 
                             wij creëren de perfecte look voor elke gelegenheid.
                         </p>
                     </Card>
-                    <Card title="Baardverzorging">
-                        <div className="relative w-full aspect-4/3 mb-4 overflow-hidden rounded border border-black min-h-[200px]">
+                    <Card title="Baardverzorging" className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+                        <div className="relative w-full aspect-4/3 mb-5 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 shadow-lg group/image min-h-[220px]">
                             <Image
                                 src={`https://images.unsplash.com/photo-${serviceImages.baardverzorging.id}`}
                                 alt={serviceImages.baardverzorging.alt}
@@ -120,15 +126,17 @@ export default function Page() {
                                 style={{ objectFit: 'cover' }}
                                 sizes="(max-width: 768px) 100vw, 50vw"
                                 unoptimized
+                                className="transition-transform duration-500 group-hover/image:scale-110"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/40 to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-500" />
                         </div>
-                        <p className="text-sm sm:text-base">
+                        <p className="text-sm sm:text-base leading-relaxed">
                             Professionele baardverzorging en styling. 
                             Van trimmen tot volledige baardverzorging.
                         </p>
                     </Card>
-                    <Card title="Haarverzorging">
-                        <div className="relative w-full aspect-4/3 mb-4 overflow-hidden rounded border border-black min-h-[200px]">
+                    <Card title="Haarverzorging" className="animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+                        <div className="relative w-full aspect-4/3 mb-5 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 shadow-lg group/image min-h-[220px]">
                             <Image
                                 src={`https://images.unsplash.com/photo-${serviceImages.haarverzorging.id}`}
                                 alt={serviceImages.haarverzorging.alt}
@@ -136,9 +144,11 @@ export default function Page() {
                                 style={{ objectFit: 'cover' }}
                                 sizes="(max-width: 768px) 100vw, 50vw"
                                 unoptimized
+                                className="transition-transform duration-500 group-hover/image:scale-110"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/40 to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-500" />
                         </div>
-                        <p className="text-sm sm:text-base">
+                        <p className="text-sm sm:text-base leading-relaxed">
                             Complete haarverzorging inclusief wassen, knippen en styling. 
                             Laat u verwennen met onze professionele service.
                         </p>
@@ -147,10 +157,10 @@ export default function Page() {
             </section>
 
             {/* Over Ons Section */}
-            <section id="over-ons" className="py-6 sm:py-8 border-t border-black">
-                <h2 className="mb-4 sm:mb-6">Over Ons</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-center">
-                    <div className="relative w-full aspect-4/3 overflow-hidden rounded-lg border-2 border-black min-h-[250px]">
+            <section id="over-ons" className="py-8 sm:py-12 lg:py-16 border-t border-neutral-200 dark:border-neutral-800">
+                <h2 className="mb-8 sm:mb-10 lg:mb-12">Over Ons</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
+                    <div className="relative w-full aspect-4/3 overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-2xl min-h-[300px] group order-2 md:order-1">
                         <Image
                             src={`https://images.unsplash.com/photo-${aboutImage.id}`}
                             alt={aboutImage.alt}
@@ -158,9 +168,11 @@ export default function Page() {
                             style={{ objectFit: 'cover' }}
                             sizes="(max-width: 768px) 100vw, 50vw"
                             unoptimized
+                            className="transition-transform duration-700 group-hover:scale-105"
                         />
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#6366f1]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
-                    <div className="space-y-4 text-sm sm:text-base">
+                    <div className="space-y-5 sm:space-y-6 text-sm sm:text-base lg:text-lg leading-relaxed order-1 md:order-2">
                         <p>
                             Met jarenlange ervaring in de kappersbranche bieden wij hoogwaardige 
                             kappersdiensten aan. Ons team bestaat uit ervaren professionals die 
@@ -175,18 +187,41 @@ export default function Page() {
             </section>
 
             {/* Contact Section */}
-            <section id="contact" className="py-6 sm:py-8 border-t border-black">
-                <h2 className="mb-4 sm:mb-6">Contact</h2>
-                <Card>
-                    <div className="space-y-3 text-sm sm:text-base">
-                        <p><strong>Telefoon:</strong> <a href="tel:+31123456789" className="underline">012-3456789</a></p>
-                        <p><strong>Email:</strong> <a href="mailto:info@kappers.nl" className="underline">info@kappers.nl</a></p>
-                        <p><strong>Openingstijden:</strong></p>
-                        <ul className="list-disc list-inside ml-2 space-y-1">
-                            <li>Maandag - Vrijdag: 09:00 - 18:00</li>
-                            <li>Zaterdag: 09:00 - 17:00</li>
-                            <li>Zondag: Gesloten</li>
-                        </ul>
+            <section id="contact" className="py-8 sm:py-12 lg:py-16 border-t border-neutral-200 dark:border-neutral-800">
+                <h2 className="mb-8 sm:mb-10 lg:mb-12">Contact</h2>
+                <Card className="max-w-2xl mx-auto">
+                    <div className="space-y-5 sm:space-y-6 text-sm sm:text-base lg:text-lg">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                            <strong className="text-neutral-900 dark:text-neutral-100 min-w-[100px]">Telefoon:</strong>
+                            <a href="tel:+31123456789" className="text-[#6366f1] hover:text-[#818cf8] transition-colors font-medium">
+                                012-3456789
+                            </a>
+                        </div>
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                            <strong className="text-neutral-900 dark:text-neutral-100 min-w-[100px]">Email:</strong>
+                            <a href="mailto:info@kappers.nl" className="text-[#6366f1] hover:text-[#818cf8] transition-colors font-medium">
+                                info@kappers.nl
+                            </a>
+                        </div>
+                        <div className="pt-4 border-t border-neutral-200 dark:border-neutral-700">
+                            <p className="mb-4 font-semibold text-neutral-900 dark:text-neutral-100">
+                                <strong>Openingstijden:</strong>
+                            </p>
+                            <ul className="space-y-2 ml-2">
+                                <li className="flex items-center gap-2">
+                                    <span className="w-2 h-2 rounded-full bg-[#6366f1]"></span>
+                                    <span>Maandag - Vrijdag: <strong>09:00 - 18:00</strong></span>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <span className="w-2 h-2 rounded-full bg-[#6366f1]"></span>
+                                    <span>Zaterdag: <strong>09:00 - 17:00</strong></span>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <span className="w-2 h-2 rounded-full bg-neutral-400"></span>
+                                    <span className="text-neutral-600 dark:text-neutral-400">Zondag: Gesloten</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </Card>
             </section>
