@@ -1,6 +1,7 @@
 import '../styles/globals.css';
 import { Footer } from '../components/footer';
 import { Header } from '../components/header';
+import { Loading } from '../components/loading';
 
 export const metadata = {
     title: {
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </head>
             <body className="antialiased text-neutral-900 dark:text-neutral-100">
+                <Loading />
                 <div className="flex flex-col min-h-screen px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-col w-full max-w-6xl mx-auto grow">
                         <Header />
