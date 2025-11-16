@@ -6,29 +6,52 @@
     --color-primary: #000000;
     --color-primary-content: #ffffff;
     --color-secondary: #ffffff;
+    --color-accent: #6366f1;
+    --color-accent-light: #818cf8;
     --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
         'Noto Color Emoji';
 }
 
 @layer base {
+    * {
+        @apply transition-colors duration-200;
+    }
+
+    body {
+        @apply bg-gradient-to-br from-neutral-50 via-white to-neutral-50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950;
+        background-attachment: fixed;
+    }
+
     h1 {
-        @apply text-4xl font-bold tracking-tight sm:text-5xl;
+        @apply text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl bg-gradient-to-r from-neutral-900 to-neutral-700 dark:from-neutral-100 dark:to-neutral-300 bg-clip-text text-transparent;
     }
 
     h2 {
-        @apply text-2xl font-bold sm:text-3xl;
+        @apply text-2xl font-bold sm:text-3xl lg:text-4xl text-neutral-900 dark:text-neutral-100;
     }
 
     h3 {
-        @apply text-xl font-bold;
+        @apply text-xl font-bold text-neutral-900 dark:text-neutral-100;
+    }
+
+    p {
+        @apply text-neutral-700 dark:text-neutral-300;
     }
 
     a:not(.btn) {
-        @apply underline transition hover:opacity-80;
+        @apply underline transition-all duration-200 hover:opacity-80;
+        &:hover {
+            color: var(--color-accent);
+        }
+        @media (prefers-color-scheme: dark) {
+            &:hover {
+                color: var(--color-accent-light);
+            }
+        }
     }
 
     :not(pre) > code {
-        @apply px-1 py-0.5 font-mono rounded bg-neutral-200 text-neutral-900;
+        @apply px-1 py-0.5 font-mono rounded bg-neutral-200 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100;
         font-size: 0.9em;
     }
 }
@@ -53,28 +76,88 @@
     }
 
     .btn {
-        @apply inline-flex items-center justify-center gap-2 font-bold text-center no-underline transition-colors cursor-pointer bg-primary text-primary-content;
+        @apply inline-flex items-center justify-center gap-2 font-bold text-center no-underline transition-all duration-300 cursor-pointer bg-gradient-to-r from-neutral-900 to-neutral-800 dark:from-neutral-100 dark:to-neutral-200 text-white dark:text-neutral-900;
         padding: var(--btn-py, 0.875rem) var(--btn-px, 1.25rem);
         font-size: var(--btn-font-size, 0.875rem);
-        border-radius: var(--btn-border-radius, 0.25rem);
+        border-radius: var(--btn-border-radius, 0.5rem);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
 
         &:hover {
-            @apply bg-primary/85;
+            @apply shadow-lg;
+            transform: scale(1.05) translateY(-2px);
+        }
+
+        &:hover::before {
+            left: 100%;
+        }
+
+        &:active {
+            @apply scale-100;
+            transform: translateY(0);
         }
 
         &:disabled {
-            @apply cursor-default text-neutral-400 bg-neutral-300;
+            @apply cursor-default text-neutral-400 bg-neutral-300 dark:bg-neutral-700 dark:text-neutral-500;
+            transform: none;
         }
     }
 
     .btn-lg {
         --btn-font-size: 1.125rem;
-        --btn-px: 1.5rem;
-        --btn-py: 1.125rem;
+        --btn-px: 1.75rem;
+        --btn-py: 1.25rem;
+        @apply shadow-xl;
     }
 
     .input {
-        @apply px-4 py-3 text-sm border rounded-sm border-neutral-300 text-neutral-900 focus:border-primary focus:outline-3 focus:outline-primary/30;
+        @apply px-4 py-3 text-sm border rounded-lg border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 focus:outline-none transition-all duration-200;
+        &:focus {
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-accent) 20%, transparent);
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .animate-fade-in-up {
+        opacity: 0;
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .animate-fade-in {
+        opacity: 0;
+        animation: fadeIn 0.8s ease-out forwards;
     }
 
     .diff {
