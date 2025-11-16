@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 
 const navItems = [
     { linkText: 'Home', href: '/' },
@@ -51,11 +52,15 @@ export function Header() {
                     {/* Mobile Menu Button */}
                     <button
                         onClick={toggleMenu}
-                        className="md:hidden ml-auto px-3 py-2 text-sm sm:text-base rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200 relative z-10"
+                        className="md:hidden ml-auto px-3 py-2 text-sm sm:text-base rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200 relative z-10 flex items-center justify-center"
                         aria-label="Toggle menu"
                         aria-expanded={isMenuOpen}
                     >
-                        <span className="text-xl">{isMenuOpen ? '✕' : '☰'}</span>
+                        {isMenuOpen ? (
+                            <X className="w-6 h-6 text-neutral-900 dark:text-neutral-100" />
+                        ) : (
+                            <Menu className="w-6 h-6 text-neutral-900 dark:text-neutral-100" />
+                        )}
                     </button>
                     
                     {/* Mobile Dropdown Menu */}

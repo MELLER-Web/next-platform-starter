@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Card } from 'components/card';
 import Link from 'next/link';
+import { Users, Camera, DollarSign, Phone } from 'lucide-react';
 
 // Unsplash foto's voor de kapperswebsite
 const heroImage = {
@@ -169,7 +170,11 @@ export default function Page() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                     <Link href="/over-ons" className="group">
                         <Card className="h-full text-center transition-all duration-300 hover:scale-105 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-                            <div className="text-4xl mb-4">👥</div>
+                            <div className="flex justify-center mb-4">
+                                <div className="p-3 rounded-full bg-[#6366f1]/10 dark:bg-[#6366f1]/20 group-hover:bg-[#6366f1]/20 dark:group-hover:bg-[#6366f1]/30 transition-colors">
+                                    <Users className="w-8 h-8 text-[#6366f1] group-hover:scale-110 transition-transform" strokeWidth={2} />
+                                </div>
+                            </div>
                             <h3 className="mb-2">Over Ons</h3>
                             <p className="text-sm text-neutral-600 dark:text-neutral-400">
                                 Leer meer over ons team en onze geschiedenis
@@ -178,7 +183,11 @@ export default function Page() {
                     </Link>
                     <Link href="/galerij" className="group">
                         <Card className="h-full text-center transition-all duration-300 hover:scale-105 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                            <div className="text-4xl mb-4">📸</div>
+                            <div className="flex justify-center mb-4">
+                                <div className="p-3 rounded-full bg-[#6366f1]/10 dark:bg-[#6366f1]/20 group-hover:bg-[#6366f1]/20 dark:group-hover:bg-[#6366f1]/30 transition-colors">
+                                    <Camera className="w-8 h-8 text-[#6366f1] group-hover:scale-110 transition-transform" strokeWidth={2} />
+                                </div>
+                            </div>
                             <h3 className="mb-2">Galerij</h3>
                             <p className="text-sm text-neutral-600 dark:text-neutral-400">
                                 Bekijk onze werk en laat u inspireren
@@ -187,7 +196,11 @@ export default function Page() {
                     </Link>
                     <Link href="/prijzen" className="group">
                         <Card className="h-full text-center transition-all duration-300 hover:scale-105 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-                            <div className="text-4xl mb-4">💰</div>
+                            <div className="flex justify-center mb-4">
+                                <div className="p-3 rounded-full bg-[#6366f1]/10 dark:bg-[#6366f1]/20 group-hover:bg-[#6366f1]/20 dark:group-hover:bg-[#6366f1]/30 transition-colors">
+                                    <DollarSign className="w-8 h-8 text-[#6366f1] group-hover:scale-110 transition-transform" strokeWidth={2} />
+                                </div>
+                            </div>
                             <h3 className="mb-2">Prijzen</h3>
                             <p className="text-sm text-neutral-600 dark:text-neutral-400">
                                 Transparante prijzen voor al onze diensten
@@ -196,7 +209,11 @@ export default function Page() {
                     </Link>
                     <Link href="/contact" className="group">
                         <Card className="h-full text-center transition-all duration-300 hover:scale-105 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-                            <div className="text-4xl mb-4">📞</div>
+                            <div className="flex justify-center mb-4">
+                                <div className="p-3 rounded-full bg-[#6366f1]/10 dark:bg-[#6366f1]/20 group-hover:bg-[#6366f1]/20 dark:group-hover:bg-[#6366f1]/30 transition-colors">
+                                    <Phone className="w-8 h-8 text-[#6366f1] group-hover:scale-110 transition-transform" strokeWidth={2} />
+                                </div>
+                            </div>
                             <h3 className="mb-2">Contact</h3>
                             <p className="text-sm text-neutral-600 dark:text-neutral-400">
                                 Neem contact met ons op voor vragen
