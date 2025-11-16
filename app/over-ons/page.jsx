@@ -43,17 +43,17 @@ export const metadata = {
 
 export default function OverOnsPage() {
     return (
-        <div className="flex flex-col gap-12 sm:gap-16 lg:gap-20 py-8 sm:py-12 lg:py-16">
-            <section className="text-center py-8 sm:py-12 lg:py-16 animate-fade-in-up">
-                <h1 className="mb-6 sm:mb-8 lg:mb-10">Over Ons</h1>
-                <p className="mb-8 sm:mb-10 lg:mb-12 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed">
+        <div className="flex flex-col gap-6 sm:gap-8 lg:gap-10 py-4 sm:py-6 lg:py-8">
+            <section className="text-center py-4 sm:py-6 lg:py-8 animate-fade-in-up">
+                <h1 className="mb-3 sm:mb-4 lg:mb-6">Over Ons</h1>
+                <p className="mb-4 sm:mb-6 lg:mb-8 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
                     Welkom bij Kappers, waar traditie en moderniteit samenkomen voor de perfecte look.
                 </p>
             </section>
 
-            <section className="py-8 sm:py-12 lg:py-16">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
-                    <div className="relative w-full aspect-4/3 overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-2xl min-h-[300px] group order-2 md:order-1">
+            <section className="py-4 sm:py-6 lg:py-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:gap-8 items-center">
+                    <div className="relative w-full aspect-4/3 overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800 shadow-lg min-h-[220px] group order-2 md:order-1">
                         <Image
                             src={`https://images.unsplash.com/photo-${aboutImage.id}`}
                             alt={aboutImage.alt}
@@ -65,8 +65,8 @@ export default function OverOnsPage() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-br from-[#6366f1]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
-                    <div className="space-y-5 sm:space-y-6 text-sm sm:text-base lg:text-lg leading-relaxed order-1 md:order-2">
-                        <h2 className="text-2xl sm:text-3xl mb-4">Ons Verhaal</h2>
+                    <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm leading-relaxed order-1 md:order-2">
+                        <h2 className="text-lg sm:text-xl mb-2">Ons Verhaal</h2>
                         <p>
                             Met jarenlange ervaring in de kappersbranche bieden wij hoogwaardige 
                             kappersdiensten aan. Ons team bestaat uit ervaren professionals die 
@@ -85,9 +85,9 @@ export default function OverOnsPage() {
                 </div>
             </section>
 
-            <section className="py-8 sm:py-12 lg:py-16 border-t border-neutral-200 dark:border-neutral-800">
-                <h2 className="mb-8 sm:mb-10 lg:mb-12 text-center">Onze Waarden</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            <section className="py-4 sm:py-6 lg:py-8 border-t border-neutral-200 dark:border-neutral-800">
+                <h2 className="mb-4 sm:mb-6 lg:mb-8 text-center">Onze Waarden</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
                     {values.map((value, index) => (
                         <Card 
                             key={value.title} 
@@ -95,7 +95,7 @@ export default function OverOnsPage() {
                             className="animate-fade-in-up"
                             style={{ animationDelay: `${(index + 1) * 0.1}s` }}
                         >
-                            <p className="text-sm sm:text-base leading-relaxed">
+                            <p className="text-xs sm:text-sm leading-relaxed">
                                 {value.description}
                             </p>
                         </Card>
@@ -103,10 +103,10 @@ export default function OverOnsPage() {
                 </div>
             </section>
 
-            <section className="py-8 sm:py-12 lg:py-16 border-t border-neutral-200 dark:border-neutral-800">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
-                    <div className="space-y-5 sm:space-y-6 text-sm sm:text-base lg:text-lg leading-relaxed order-2 md:order-2">
-                        <h2 className="text-2xl sm:text-3xl mb-4">Ons Team</h2>
+            <section className="py-4 sm:py-6 lg:py-8 border-t border-neutral-200 dark:border-neutral-800">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:gap-8 items-center">
+                    <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm leading-relaxed order-2 md:order-2">
+                        <h2 className="text-lg sm:text-xl mb-2">Ons Team</h2>
                         <p>
                             Ons team bestaat uit gepassioneerde professionals die continu bijscholen 
                             en op de hoogte blijven van de nieuwste trends en technieken in de 
@@ -122,7 +122,7 @@ export default function OverOnsPage() {
                             helpen uw perfecte look te vinden.
                         </p>
                     </div>
-                    <div className="relative w-full aspect-4/3 overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-2xl min-h-[300px] group order-1 md:order-1">
+                    <div className="relative w-full aspect-4/3 overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800 shadow-lg min-h-[220px] group order-1 md:order-1">
                         <Image
                             src={`https://images.unsplash.com/photo-${teamImage.id}`}
                             alt={teamImage.alt}
@@ -137,13 +137,13 @@ export default function OverOnsPage() {
                 </div>
             </section>
 
-            <section className="py-8 sm:py-12 lg:py-16 border-t border-neutral-200 dark:border-neutral-800 text-center">
-                <h2 className="mb-6 sm:mb-8">Kom Bij Ons Langs</h2>
-                <p className="mb-8 text-base sm:text-lg max-w-2xl mx-auto">
+            <section className="py-4 sm:py-6 lg:py-8 border-t border-neutral-200 dark:border-neutral-800 text-center">
+                <h2 className="mb-3 sm:mb-4">Kom Bij Ons Langs</h2>
+                <p className="mb-4 text-sm sm:text-base max-w-xl mx-auto">
                     Wij nodigen u uit om onze salon te bezoeken en kennis te maken met ons team. 
                     Maak een afspraak of neem contact met ons op.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center">
                     <Link href="/afspraak" className="btn">
                         Maak Afspraak
                     </Link>

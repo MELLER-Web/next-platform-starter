@@ -24,20 +24,20 @@ export const metadata = {
 
 export default function GalerijPage() {
     return (
-        <div className="flex flex-col gap-12 sm:gap-16 lg:gap-20 py-8 sm:py-12 lg:py-16">
-            <section className="text-center py-8 sm:py-12 lg:py-16 animate-fade-in-up">
-                <h1 className="mb-6 sm:mb-8 lg:mb-10">Galerij</h1>
-                <p className="mb-8 sm:mb-10 lg:mb-12 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed">
+        <div className="flex flex-col gap-6 sm:gap-8 lg:gap-10 py-4 sm:py-6 lg:py-8">
+            <section className="text-center py-4 sm:py-6 lg:py-8 animate-fade-in-up">
+                <h1 className="mb-3 sm:mb-4 lg:mb-6">Galerij</h1>
+                <p className="mb-4 sm:mb-6 lg:mb-8 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
                     Bekijk onze werk en laat u inspireren door de looks die wij creëren.
                 </p>
             </section>
 
-            <section className="py-8 sm:py-12 lg:py-16">
-                <div className="flex flex-wrap gap-3 sm:gap-4 justify-center mb-8 sm:mb-10">
+            <section className="py-4 sm:py-6 lg:py-8">
+                <div className="flex flex-wrap gap-2 sm:gap-3 justify-center mb-5 sm:mb-6">
                     {categories.map((category, index) => (
                         <button
                             key={category}
-                            className="px-4 py-2 text-sm sm:text-base rounded-lg transition-all duration-200 bg-neutral-100 dark:bg-neutral-800 hover:bg-[#6366f1] hover:text-white dark:hover:bg-[#6366f1] font-medium animate-fade-in-up"
+                            className="px-3 py-1.5 text-xs sm:text-sm rounded-md transition-all duration-200 bg-neutral-100 dark:bg-neutral-800 hover:bg-[#6366f1] hover:text-white dark:hover:bg-[#6366f1] font-medium animate-fade-in-up"
                             style={{ animationDelay: `${index * 0.05}s` }}
                         >
                             {category}
@@ -45,7 +45,7 @@ export default function GalerijPage() {
                     ))}
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-5">
                     {galleryImages.map((image, index) => (
                         <Card 
                             key={`${image.id}-${index}`}
@@ -63,9 +63,9 @@ export default function GalerijPage() {
                                     className="transition-transform duration-500 group-hover:scale-110"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                    <div className="absolute bottom-4 left-4 right-4">
-                                        <p className="text-white font-semibold text-sm sm:text-base">{image.alt}</p>
-                                        <p className="text-white/80 text-xs sm:text-sm">{image.category}</p>
+                                    <div className="absolute bottom-3 left-3 right-3">
+                                        <p className="text-white font-semibold text-xs sm:text-sm">{image.alt}</p>
+                                        <p className="text-white/80 text-xs">{image.category}</p>
                                     </div>
                                 </div>
                             </div>
@@ -74,9 +74,9 @@ export default function GalerijPage() {
                 </div>
             </section>
 
-            <section className="py-8 sm:py-12 lg:py-16 border-t border-neutral-200 dark:border-neutral-800 text-center">
-                <h2 className="mb-6 sm:mb-8">Laat U Inspireren</h2>
-                <p className="mb-8 text-base sm:text-lg max-w-2xl mx-auto">
+            <section className="py-4 sm:py-6 lg:py-8 border-t border-neutral-200 dark:border-neutral-800 text-center">
+                <h2 className="mb-3 sm:mb-4">Laat U Inspireren</h2>
+                <p className="mb-4 text-sm sm:text-base max-w-xl mx-auto">
                     Heeft u een look gezien die u bevalt? Neem de foto mee naar uw afspraak 
                     en wij helpen u om dezelfde look te bereiken.
                 </p>

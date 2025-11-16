@@ -19,8 +19,8 @@ export default function RootLayout({ children }) {
             </head>
             <body className="antialiased text-neutral-900 dark:text-neutral-100">
                 <Loading />
-                <div className="flex flex-col min-h-screen px-4 sm:px-6 lg:px-8">
-                    <div className="flex flex-col w-full max-w-6xl mx-auto grow">
+                <div className="flex flex-col min-h-screen px-3 sm:px-4 lg:px-6">
+                    <div className="flex flex-col w-full max-w-5xl mx-auto grow">
                         <Header />
                         <main className="grow animate-fade-in">{children}</main>
                         <Footer />
