@@ -92,17 +92,17 @@ export const metadata = {
 
 export default function DienstenPage() {
     return (
-        <div className="flex flex-col gap-12 sm:gap-16 lg:gap-20 py-8 sm:py-12 lg:py-16">
-            <section className="text-center py-8 sm:py-12 lg:py-16 animate-fade-in-up">
-                <h1 className="mb-6 sm:mb-8 lg:mb-10">Onze Diensten</h1>
-                <p className="mb-8 sm:mb-10 lg:mb-12 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed">
+        <div className="flex flex-col gap-6 sm:gap-8 lg:gap-10 py-4 sm:py-6 lg:py-8">
+            <section className="text-center py-4 sm:py-6 lg:py-8 animate-fade-in-up">
+                <h1 className="mb-3 sm:mb-4 lg:mb-6">Onze Diensten</h1>
+                <p className="mb-4 sm:mb-6 lg:mb-8 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
                     Wij bieden een breed scala aan professionele kappersdiensten. 
                     Van klassieke knippen tot moderne styling, wij hebben alles wat u nodig heeft.
                 </p>
             </section>
 
-            <section className="py-8 sm:py-12 lg:py-16">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+            <section className="py-4 sm:py-6 lg:py-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
                     {services.map((service, index) => (
                         <Card 
                             key={service.title} 
@@ -110,7 +110,7 @@ export default function DienstenPage() {
                             className="animate-fade-in-up" 
                             style={{ animationDelay: `${(index + 1) * 0.1}s` }}
                         >
-                            <div className="relative w-full aspect-4/3 mb-5 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 shadow-lg group/image min-h-[220px]">
+                            <div className="relative w-full aspect-4/3 mb-3 overflow-hidden rounded-md border border-neutral-200 dark:border-neutral-700 shadow-sm group/image min-h-[180px]">
                                 <Image
                                     src={`https://images.unsplash.com/photo-${service.image.id}`}
                                     alt={service.image.alt}
@@ -122,18 +122,18 @@ export default function DienstenPage() {
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/40 to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-500" />
                             </div>
-                            <p className="text-sm sm:text-base leading-relaxed mb-4">
+                            <p className="text-xs sm:text-sm leading-relaxed mb-3">
                                 {service.description}
                             </p>
-                            <ul className="space-y-2 mb-4">
+                            <ul className="space-y-1.5 mb-3">
                                 {service.features.map((feature, idx) => (
-                                    <li key={idx} className="flex items-center gap-2 text-sm">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]"></span>
+                                    <li key={idx} className="flex items-center gap-2 text-xs sm:text-sm">
+                                        <span className="w-1 h-1 rounded-full bg-[#6366f1] flex-shrink-0"></span>
                                         <span>{feature}</span>
                                     </li>
                                 ))}
                             </ul>
-                            <Link href="/afspraak" className="btn mt-4">
+                            <Link href="/afspraak" className="btn mt-2 w-full">
                                 Maak Afspraak
                             </Link>
                         </Card>
@@ -141,12 +141,12 @@ export default function DienstenPage() {
                 </div>
             </section>
 
-            <section className="py-8 sm:py-12 lg:py-16 border-t border-neutral-200 dark:border-neutral-800 text-center">
-                <h2 className="mb-6 sm:mb-8">Vragen over onze diensten?</h2>
-                <p className="mb-8 text-base sm:text-lg max-w-2xl mx-auto">
+            <section className="py-4 sm:py-6 lg:py-8 border-t border-neutral-200 dark:border-neutral-800 text-center">
+                <h2 className="mb-3 sm:mb-4">Vragen over onze diensten?</h2>
+                <p className="mb-4 text-sm sm:text-base max-w-xl mx-auto">
                     Neem contact met ons op voor meer informatie of maak direct een afspraak.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center">
                     <Link href="/contact" className="btn">
                         Contact Opnemen
                     </Link>

@@ -2,14 +2,14 @@ export function Alert({ children, className, type }) {
     return (
         <div
             className={[
-                'flex gap-4 p-4 rounded-sm',
+                'flex gap-2 sm:gap-3 p-3 sm:p-4 rounded-md text-xs sm:text-sm',
                 type === 'error' ? 'bg-rose-400 text-neutral-900' : 'bg-primary text-primary-content',
                 className
             ]
                 .filter(Boolean)
                 .join(' ')}
         >
-            <AlertIcon type={type} className="w-6 h-6 fill-current shrink-0" />
+            <AlertIcon type={type} className="w-4 h-4 sm:w-5 sm:h-5 fill-current shrink-0" />
             {children}
         </div>
     );

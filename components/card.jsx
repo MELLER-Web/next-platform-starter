@@ -2,11 +2,11 @@ export function Card({ title, children, className }) {
     return (
         <div className={[
             'bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200',
-            'rounded-xl shadow-md hover:shadow-xl transition-all duration-300',
-            'hover:-translate-y-1 overflow-hidden group',
+            'rounded-lg shadow-sm hover:shadow-md transition-all duration-300',
+            'hover:-translate-y-0.5 overflow-hidden group',
             className
         ].filter(Boolean).join(' ')}>
-            <div className="flex flex-col gap-3 sm:gap-4 px-4 py-5 sm:px-6 sm:py-6 relative">
+            <div className="flex flex-col gap-2 sm:gap-3 px-3 py-3 sm:px-4 sm:py-4 relative">
                 {title && (
                     <h3 className="relative z-10 text-neutral-900 dark:text-neutral-100">
                         {title}
