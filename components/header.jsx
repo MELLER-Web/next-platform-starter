@@ -4,9 +4,12 @@ import { useState } from 'react';
 
 const navItems = [
     { linkText: 'Home', href: '/' },
-    { linkText: 'Diensten', href: '#diensten' },
-    { linkText: 'Over Ons', href: '#over-ons' },
-    { linkText: 'Contact', href: '#contact' }
+    { linkText: 'Diensten', href: '/diensten' },
+    { linkText: 'Over Ons', href: '/over-ons' },
+    { linkText: 'Galerij', href: '/galerij' },
+    { linkText: 'Prijzen', href: '/prijzen' },
+    { linkText: 'Afspraak', href: '/afspraak' },
+    { linkText: 'Contact', href: '/contact' }
 ];
 
 export function Header() {
