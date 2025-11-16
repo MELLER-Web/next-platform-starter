@@ -54,7 +54,7 @@ export default function Page() {
         <div className="flex flex-col gap-8 sm:gap-12 py-6 sm:py-8">
             {/* Hero Section */}
             <section className="text-center py-8 sm:py-12">
-                <div className="relative w-full max-w-4xl mx-auto mb-6 sm:mb-8 aspect-16/9 overflow-hidden rounded-lg border-2 border-black">
+                <div className="relative w-full max-w-4xl mx-auto mb-6 sm:mb-8 aspect-16/9 overflow-hidden rounded-lg border-2 border-black min-h-[250px]">
                     <Image
                         src={`https://images.unsplash.com/photo-${heroImage.id}`}
                         alt={heroImage.alt}
@@ -62,6 +62,7 @@ export default function Page() {
                         style={{ objectFit: 'cover' }}
                         sizes="(max-width: 1024px) 100vw, 1024px"
                         priority
+                        unoptimized
                     />
                 </div>
                 <h1 className="mb-4 sm:mb-6">Professionele Kappers</h1>
@@ -79,13 +80,14 @@ export default function Page() {
                 <h2 className="mb-6 sm:mb-8 text-center">Onze Diensten</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     <Card title="Herenknippen">
-                        <div className="relative w-full aspect-4/3 mb-4 overflow-hidden rounded border border-black">
+                        <div className="relative w-full aspect-4/3 mb-4 overflow-hidden rounded border border-black min-h-[200px]">
                             <Image
                                 src={`https://images.unsplash.com/photo-${serviceImages.herenknippen.id}`}
                                 alt={serviceImages.herenknippen.alt}
                                 fill={true}
                                 style={{ objectFit: 'cover' }}
                                 sizes="(max-width: 768px) 100vw, 50vw"
+                                unoptimized
                             />
                         </div>
                         <p className="text-sm sm:text-base">
@@ -94,13 +96,14 @@ export default function Page() {
                         </p>
                     </Card>
                     <Card title="Damesknippen">
-                        <div className="relative w-full aspect-4/3 mb-4 overflow-hidden rounded border border-black">
+                        <div className="relative w-full aspect-4/3 mb-4 overflow-hidden rounded border border-black min-h-[200px]">
                             <Image
                                 src={`https://images.unsplash.com/photo-${serviceImages.damesknippen.id}`}
                                 alt={serviceImages.damesknippen.alt}
                                 fill={true}
                                 style={{ objectFit: 'cover' }}
                                 sizes="(max-width: 768px) 100vw, 50vw"
+                                unoptimized
                             />
                         </div>
                         <p className="text-sm sm:text-base">
@@ -109,13 +112,14 @@ export default function Page() {
                         </p>
                     </Card>
                     <Card title="Baardverzorging">
-                        <div className="relative w-full aspect-4/3 mb-4 overflow-hidden rounded border border-black">
+                        <div className="relative w-full aspect-4/3 mb-4 overflow-hidden rounded border border-black min-h-[200px]">
                             <Image
                                 src={`https://images.unsplash.com/photo-${serviceImages.baardverzorging.id}`}
                                 alt={serviceImages.baardverzorging.alt}
                                 fill={true}
                                 style={{ objectFit: 'cover' }}
                                 sizes="(max-width: 768px) 100vw, 50vw"
+                                unoptimized
                             />
                         </div>
                         <p className="text-sm sm:text-base">
@@ -124,13 +128,14 @@ export default function Page() {
                         </p>
                     </Card>
                     <Card title="Haarverzorging">
-                        <div className="relative w-full aspect-4/3 mb-4 overflow-hidden rounded border border-black">
+                        <div className="relative w-full aspect-4/3 mb-4 overflow-hidden rounded border border-black min-h-[200px]">
                             <Image
                                 src={`https://images.unsplash.com/photo-${serviceImages.haarverzorging.id}`}
                                 alt={serviceImages.haarverzorging.alt}
                                 fill={true}
                                 style={{ objectFit: 'cover' }}
                                 sizes="(max-width: 768px) 100vw, 50vw"
+                                unoptimized
                             />
                         </div>
                         <p className="text-sm sm:text-base">
@@ -145,13 +150,14 @@ export default function Page() {
             <section id="over-ons" className="py-6 sm:py-8 border-t border-black">
                 <h2 className="mb-4 sm:mb-6">Over Ons</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-center">
-                    <div className="relative w-full aspect-4/3 overflow-hidden rounded-lg border-2 border-black">
+                    <div className="relative w-full aspect-4/3 overflow-hidden rounded-lg border-2 border-black min-h-[250px]">
                         <Image
                             src={`https://images.unsplash.com/photo-${aboutImage.id}`}
                             alt={aboutImage.alt}
                             fill={true}
                             style={{ objectFit: 'cover' }}
                             sizes="(max-width: 768px) 100vw, 50vw"
+                            unoptimized
                         />
                     </div>
                     <div className="space-y-4 text-sm sm:text-base">
