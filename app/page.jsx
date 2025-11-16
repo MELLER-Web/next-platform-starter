@@ -55,8 +55,8 @@ export default function Page() {
     return (
         <div className="flex flex-col gap-12 sm:gap-16 lg:gap-20 py-8 sm:py-12 lg:py-16">
             {/* Hero Section */}
-            <section className="text-center py-8 sm:py-12 lg:py-16 animate-fade-in-up">
-                <div className="relative w-full max-w-5xl mx-auto mb-8 sm:mb-10 lg:mb-12 aspect-16/9 overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-2xl min-h-[300px] sm:min-h-[400px] group">
+            <section className="text-center py-12 sm:py-16 lg:py-20 animate-fade-in-up">
+                <div className="relative w-full max-w-5xl mx-auto mb-10 sm:mb-12 lg:mb-14 aspect-16/9 overflow-hidden rounded-3xl border border-neutral-200/30 dark:border-neutral-700/30 shadow-2xl min-h-[300px] sm:min-h-[400px] group">
                     <Image
                         src={`https://images.unsplash.com/photo-${heroImage.id}`}
                         alt={heroImage.alt}
@@ -65,16 +65,17 @@ export default function Page() {
                         sizes="(max-width: 1024px) 100vw, 1280px"
                         priority
                         unoptimized
-                        className="transition-transform duration-700 group-hover:scale-105"
+                        className="transition-transform duration-1000 ease-out group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-neutral-900/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/70 via-neutral-900/30 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#6366f1]/20 via-transparent to-[#818cf8]/10 mix-blend-overlay" />
                 </div>
-                <h1 className="mb-6 sm:mb-8 lg:mb-10">Professionele Kappers</h1>
-                <p className="mb-8 sm:mb-10 lg:mb-12 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed">
+                <h1 className="mb-8 sm:mb-10 lg:mb-12 animate-scale-in">Professionele Kappers</h1>
+                <p className="mb-10 sm:mb-12 lg:mb-14 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed text-neutral-600 dark:text-neutral-400 animate-fade-in" style={{ animationDelay: '0.1s' }}>
                     Wij zorgen voor de perfecte look. Van klassieke knippen tot moderne stijlen, 
                     wij maken u klaar voor elke gelegenheid.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+                <div className="flex flex-col sm:flex-row gap-5 justify-center animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
                     <Link href="/afspraak" className="btn btn-lg">
                         Maak een Afspraak
                     </Link>
@@ -85,15 +86,15 @@ export default function Page() {
             </section>
 
             {/* Diensten Preview Section */}
-            <section className="py-8 sm:py-12 lg:py-16">
-                <h2 className="mb-6 sm:mb-8 text-center">Onze Diensten</h2>
-                <p className="mb-10 sm:mb-12 lg:mb-16 text-center text-base sm:text-lg max-w-2xl mx-auto">
+            <section className="py-12 sm:py-16 lg:py-20">
+                <h2 className="mb-8 sm:mb-10 text-center">Onze Diensten</h2>
+                <p className="mb-12 sm:mb-14 lg:mb-16 text-center text-base sm:text-lg max-w-2xl mx-auto text-neutral-600 dark:text-neutral-400">
                     Wij bieden een breed scala aan professionele kappersdiensten. 
                     Van klassieke knippen tot moderne styling.
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-7 mb-10 sm:mb-12">
                     <Card title="Herenknippen" className="animate-fade-in-up text-center" style={{ animationDelay: '0.1s' }}>
-                        <div className="relative w-full aspect-square mb-4 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 shadow-lg group/image">
+                        <div className="relative w-full aspect-square mb-5 overflow-hidden rounded-2xl border border-neutral-200/50 dark:border-neutral-700/50 shadow-md group/image">
                             <Image
                                 src={`https://images.unsplash.com/photo-${serviceImages.herenknippen.id}`}
                                 alt={serviceImages.herenknippen.alt}
@@ -101,15 +102,17 @@ export default function Page() {
                                 style={{ objectFit: 'cover' }}
                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                                 unoptimized
-                                className="transition-transform duration-500 group-hover/image:scale-110"
+                                className="transition-all duration-700 ease-out group-hover/image:scale-110 group-hover/image:rotate-2"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/50 via-transparent to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-500" />
                         </div>
-                        <Link href="/diensten" className="text-[#6366f1] hover:underline text-sm font-medium">
-                            Meer informatie →
+                        <Link href="/diensten" className="text-[#6366f1] dark:text-[#818cf8] hover:text-[#4f46e5] dark:hover:text-[#6366f1] transition-colors text-sm font-semibold inline-flex items-center gap-1 group/link">
+                            <span>Meer informatie</span>
+                            <span className="transition-transform group-hover/link:translate-x-1">→</span>
                         </Link>
                     </Card>
                     <Card title="Damesknippen" className="animate-fade-in-up text-center" style={{ animationDelay: '0.2s' }}>
-                        <div className="relative w-full aspect-square mb-4 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 shadow-lg group/image">
+                        <div className="relative w-full aspect-square mb-5 overflow-hidden rounded-2xl border border-neutral-200/50 dark:border-neutral-700/50 shadow-md group/image">
                             <Image
                                 src={`https://images.unsplash.com/photo-${serviceImages.damesknippen.id}`}
                                 alt={serviceImages.damesknippen.alt}
@@ -117,15 +120,17 @@ export default function Page() {
                                 style={{ objectFit: 'cover' }}
                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                                 unoptimized
-                                className="transition-transform duration-500 group-hover/image:scale-110"
+                                className="transition-all duration-700 ease-out group-hover/image:scale-110 group-hover/image:rotate-2"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/50 via-transparent to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-500" />
                         </div>
-                        <Link href="/diensten" className="text-[#6366f1] hover:underline text-sm font-medium">
-                            Meer informatie →
+                        <Link href="/diensten" className="text-[#6366f1] dark:text-[#818cf8] hover:text-[#4f46e5] dark:hover:text-[#6366f1] transition-colors text-sm font-semibold inline-flex items-center gap-1 group/link">
+                            <span>Meer informatie</span>
+                            <span className="transition-transform group-hover/link:translate-x-1">→</span>
                         </Link>
                     </Card>
                     <Card title="Baardverzorging" className="animate-fade-in-up text-center" style={{ animationDelay: '0.3s' }}>
-                        <div className="relative w-full aspect-square mb-4 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 shadow-lg group/image">
+                        <div className="relative w-full aspect-square mb-5 overflow-hidden rounded-2xl border border-neutral-200/50 dark:border-neutral-700/50 shadow-md group/image">
                             <Image
                                 src={`https://images.unsplash.com/photo-${serviceImages.baardverzorging.id}`}
                                 alt={serviceImages.baardverzorging.alt}
@@ -133,15 +138,17 @@ export default function Page() {
                                 style={{ objectFit: 'cover' }}
                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                                 unoptimized
-                                className="transition-transform duration-500 group-hover/image:scale-110"
+                                className="transition-all duration-700 ease-out group-hover/image:scale-110 group-hover/image:rotate-2"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/50 via-transparent to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-500" />
                         </div>
-                        <Link href="/diensten" className="text-[#6366f1] hover:underline text-sm font-medium">
-                            Meer informatie →
+                        <Link href="/diensten" className="text-[#6366f1] dark:text-[#818cf8] hover:text-[#4f46e5] dark:hover:text-[#6366f1] transition-colors text-sm font-semibold inline-flex items-center gap-1 group/link">
+                            <span>Meer informatie</span>
+                            <span className="transition-transform group-hover/link:translate-x-1">→</span>
                         </Link>
                     </Card>
                     <Card title="Haarverzorging" className="animate-fade-in-up text-center" style={{ animationDelay: '0.4s' }}>
-                        <div className="relative w-full aspect-square mb-4 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 shadow-lg group/image">
+                        <div className="relative w-full aspect-square mb-5 overflow-hidden rounded-2xl border border-neutral-200/50 dark:border-neutral-700/50 shadow-md group/image">
                             <Image
                                 src={`https://images.unsplash.com/photo-${serviceImages.haarverzorging.id}`}
                                 alt={serviceImages.haarverzorging.alt}
@@ -149,11 +156,13 @@ export default function Page() {
                                 style={{ objectFit: 'cover' }}
                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                                 unoptimized
-                                className="transition-transform duration-500 group-hover/image:scale-110"
+                                className="transition-all duration-700 ease-out group-hover/image:scale-110 group-hover/image:rotate-2"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/50 via-transparent to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-500" />
                         </div>
-                        <Link href="/diensten" className="text-[#6366f1] hover:underline text-sm font-medium">
-                            Meer informatie →
+                        <Link href="/diensten" className="text-[#6366f1] dark:text-[#818cf8] hover:text-[#4f46e5] dark:hover:text-[#6366f1] transition-colors text-sm font-semibold inline-flex items-center gap-1 group/link">
+                            <span>Meer informatie</span>
+                            <span className="transition-transform group-hover/link:translate-x-1">→</span>
                         </Link>
                     </Card>
                 </div>
@@ -165,57 +174,57 @@ export default function Page() {
             </section>
 
             {/* Quick Links Section */}
-            <section className="py-8 sm:py-12 lg:py-16 border-t border-neutral-200 dark:border-neutral-800">
-                <h2 className="mb-8 sm:mb-10 lg:mb-12 text-center">Ontdek Meer</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <section className="py-12 sm:py-16 lg:py-20 border-t border-neutral-200/50 dark:border-neutral-700/50">
+                <h2 className="mb-10 sm:mb-12 lg:mb-14 text-center">Ontdek Meer</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-7">
                     <Link href="/over-ons" className="group">
-                        <Card className="h-full text-center transition-all duration-300 hover:scale-105 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-                            <div className="flex justify-center mb-4">
-                                <div className="p-3 rounded-full bg-[#6366f1]/10 dark:bg-[#6366f1]/20 group-hover:bg-[#6366f1]/20 dark:group-hover:bg-[#6366f1]/30 transition-colors">
-                                    <Users className="w-8 h-8 text-[#6366f1] group-hover:scale-110 transition-transform" strokeWidth={2} />
+                        <Card className="h-full text-center transition-all duration-500 hover:scale-105 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                            <div className="flex justify-center mb-5">
+                                <div className="p-4 rounded-2xl bg-gradient-to-br from-[#6366f1]/10 to-[#818cf8]/5 dark:from-[#6366f1]/20 dark:to-[#818cf8]/10 group-hover:from-[#6366f1]/20 group-hover:to-[#818cf8]/10 dark:group-hover:from-[#6366f1]/30 dark:group-hover:to-[#818cf8]/20 transition-all duration-500 group-hover:rotate-6">
+                                    <Users className="w-8 h-8 text-[#6366f1] dark:text-[#818cf8] group-hover:scale-110 transition-transform duration-500" strokeWidth={2} />
                                 </div>
                             </div>
-                            <h3 className="mb-2">Over Ons</h3>
-                            <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                            <h3 className="mb-3">Over Ons</h3>
+                            <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
                                 Leer meer over ons team en onze geschiedenis
                             </p>
                         </Card>
                     </Link>
                     <Link href="/galerij" className="group">
-                        <Card className="h-full text-center transition-all duration-300 hover:scale-105 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                            <div className="flex justify-center mb-4">
-                                <div className="p-3 rounded-full bg-[#6366f1]/10 dark:bg-[#6366f1]/20 group-hover:bg-[#6366f1]/20 dark:group-hover:bg-[#6366f1]/30 transition-colors">
-                                    <Camera className="w-8 h-8 text-[#6366f1] group-hover:scale-110 transition-transform" strokeWidth={2} />
+                        <Card className="h-full text-center transition-all duration-500 hover:scale-105 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+                            <div className="flex justify-center mb-5">
+                                <div className="p-4 rounded-2xl bg-gradient-to-br from-[#6366f1]/10 to-[#818cf8]/5 dark:from-[#6366f1]/20 dark:to-[#818cf8]/10 group-hover:from-[#6366f1]/20 group-hover:to-[#818cf8]/10 dark:group-hover:from-[#6366f1]/30 dark:group-hover:to-[#818cf8]/20 transition-all duration-500 group-hover:rotate-6">
+                                    <Camera className="w-8 h-8 text-[#6366f1] dark:text-[#818cf8] group-hover:scale-110 transition-transform duration-500" strokeWidth={2} />
                                 </div>
                             </div>
-                            <h3 className="mb-2">Galerij</h3>
-                            <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                            <h3 className="mb-3">Galerij</h3>
+                            <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
                                 Bekijk onze werk en laat u inspireren
                             </p>
                         </Card>
                     </Link>
                     <Link href="/prijzen" className="group">
-                        <Card className="h-full text-center transition-all duration-300 hover:scale-105 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-                            <div className="flex justify-center mb-4">
-                                <div className="p-3 rounded-full bg-[#6366f1]/10 dark:bg-[#6366f1]/20 group-hover:bg-[#6366f1]/20 dark:group-hover:bg-[#6366f1]/30 transition-colors">
-                                    <DollarSign className="w-8 h-8 text-[#6366f1] group-hover:scale-110 transition-transform" strokeWidth={2} />
+                        <Card className="h-full text-center transition-all duration-500 hover:scale-105 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+                            <div className="flex justify-center mb-5">
+                                <div className="p-4 rounded-2xl bg-gradient-to-br from-[#6366f1]/10 to-[#818cf8]/5 dark:from-[#6366f1]/20 dark:to-[#818cf8]/10 group-hover:from-[#6366f1]/20 group-hover:to-[#818cf8]/10 dark:group-hover:from-[#6366f1]/30 dark:group-hover:to-[#818cf8]/20 transition-all duration-500 group-hover:rotate-6">
+                                    <DollarSign className="w-8 h-8 text-[#6366f1] dark:text-[#818cf8] group-hover:scale-110 transition-transform duration-500" strokeWidth={2} />
                                 </div>
                             </div>
-                            <h3 className="mb-2">Prijzen</h3>
-                            <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                            <h3 className="mb-3">Prijzen</h3>
+                            <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
                                 Transparante prijzen voor al onze diensten
                             </p>
                         </Card>
                     </Link>
                     <Link href="/contact" className="group">
-                        <Card className="h-full text-center transition-all duration-300 hover:scale-105 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-                            <div className="flex justify-center mb-4">
-                                <div className="p-3 rounded-full bg-[#6366f1]/10 dark:bg-[#6366f1]/20 group-hover:bg-[#6366f1]/20 dark:group-hover:bg-[#6366f1]/30 transition-colors">
-                                    <Phone className="w-8 h-8 text-[#6366f1] group-hover:scale-110 transition-transform" strokeWidth={2} />
+                        <Card className="h-full text-center transition-all duration-500 hover:scale-105 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+                            <div className="flex justify-center mb-5">
+                                <div className="p-4 rounded-2xl bg-gradient-to-br from-[#6366f1]/10 to-[#818cf8]/5 dark:from-[#6366f1]/20 dark:to-[#818cf8]/10 group-hover:from-[#6366f1]/20 group-hover:to-[#818cf8]/10 dark:group-hover:from-[#6366f1]/30 dark:group-hover:to-[#818cf8]/20 transition-all duration-500 group-hover:rotate-6">
+                                    <Phone className="w-8 h-8 text-[#6366f1] dark:text-[#818cf8] group-hover:scale-110 transition-transform duration-500" strokeWidth={2} />
                                 </div>
                             </div>
-                            <h3 className="mb-2">Contact</h3>
-                            <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                            <h3 className="mb-3">Contact</h3>
+                            <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
                                 Neem contact met ons op voor vragen
                             </p>
                         </Card>
@@ -224,18 +233,21 @@ export default function Page() {
             </section>
 
             {/* CTA Section */}
-            <section className="py-8 sm:py-12 lg:py-16 border-t border-neutral-200 dark:border-neutral-800 text-center">
-                <h2 className="mb-6 sm:mb-8">Klaar voor Uw Nieuwe Look?</h2>
-                <p className="mb-8 text-base sm:text-lg max-w-2xl mx-auto">
-                    Maak vandaag nog een afspraak en laat u verwennen met onze professionele service.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link href="/afspraak" className="btn btn-lg">
-                        Maak een Afspraak
-                    </Link>
-                    <Link href="/contact" className="btn btn-lg">
-                        Contact Opnemen
-                    </Link>
+            <section className="py-12 sm:py-16 lg:py-20 border-t border-neutral-200/50 dark:border-neutral-700/50 text-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#6366f1]/5 via-transparent to-[#818cf8]/5 pointer-events-none" />
+                <div className="relative z-10">
+                    <h2 className="mb-8 sm:mb-10">Klaar voor Uw Nieuwe Look?</h2>
+                    <p className="mb-10 sm:mb-12 text-base sm:text-lg max-w-2xl mx-auto text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                        Maak vandaag nog een afspraak en laat u verwennen met onze professionele service.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-5 justify-center">
+                        <Link href="/afspraak" className="btn btn-lg">
+                            Maak een Afspraak
+                        </Link>
+                        <Link href="/contact" className="btn btn-lg">
+                            Contact Opnemen
+                        </Link>
+                    </div>
                 </div>
             </section>
         </div>
