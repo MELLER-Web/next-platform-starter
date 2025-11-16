@@ -8,6 +8,11 @@
     --color-secondary: #ffffff;
     --color-accent: #6366f1;
     --color-accent-light: #818cf8;
+    --color-accent-dark: #4f46e5;
+    --color-glass-bg: rgba(255, 255, 255, 0.7);
+    --color-glass-bg-dark: rgba(23, 23, 23, 0.7);
+    --color-glass-border: rgba(255, 255, 255, 0.3);
+    --color-glass-border-dark: rgba(255, 255, 255, 0.1);
     --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
         'Noto Color Emoji';
 }
@@ -18,20 +23,34 @@
     }
 
     body {
-        @apply bg-gradient-to-br from-neutral-50 via-white to-neutral-50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950;
+        @apply bg-gradient-to-br from-neutral-50 via-white to-neutral-100/50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950;
         background-attachment: fixed;
+        background-image: 
+            radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.05) 0px, transparent 50%),
+            radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.05) 0px, transparent 50%);
+    }
+    
+    @media (prefers-color-scheme: dark) {
+        body {
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.1) 0px, transparent 50%);
+        }
     }
 
     h1 {
-        @apply text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl bg-gradient-to-r from-neutral-900 to-neutral-700 dark:from-neutral-100 dark:to-neutral-300 bg-clip-text text-transparent;
+        @apply text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl bg-gradient-to-r from-neutral-900 via-neutral-800 to-neutral-900 dark:from-neutral-100 dark:via-neutral-200 dark:to-neutral-100 bg-clip-text text-transparent;
+        letter-spacing: -0.02em;
     }
 
     h2 {
-        @apply text-2xl font-bold sm:text-3xl lg:text-4xl text-neutral-900 dark:text-neutral-100;
+        @apply text-2xl font-bold sm:text-3xl lg:text-4xl bg-gradient-to-r from-neutral-900 to-neutral-700 dark:from-neutral-100 dark:to-neutral-300 bg-clip-text text-transparent;
+        letter-spacing: -0.01em;
     }
 
     h3 {
         @apply text-xl font-bold text-neutral-900 dark:text-neutral-100;
+        letter-spacing: -0.01em;
     }
 
     p {
@@ -57,6 +76,32 @@
 }
 
 @layer components {
+    .glass {
+        background: var(--color-glass-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--color-glass-border);
+        @media (prefers-color-scheme: dark) {
+            background: var(--color-glass-bg-dark);
+            border-color: var(--color-glass-border-dark);
+        }
+    }
+    
+    .glass-card {
+        @apply glass rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300;
+    }
+    
+    .glow {
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    }
+    
+    .glow-hover {
+        transition: box-shadow 0.3s ease;
+        &:hover {
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+        }
+    }
+
     .markdown {
         > * {
             @apply my-4;
@@ -76,13 +121,14 @@
     }
 
     .btn {
-        @apply inline-flex items-center justify-center gap-2 font-bold text-center no-underline transition-all duration-300 cursor-pointer bg-gradient-to-r from-neutral-900 to-neutral-800 dark:from-neutral-100 dark:to-neutral-200 text-white dark:text-neutral-900;
-        padding: var(--btn-py, 0.875rem) var(--btn-px, 1.25rem);
+        @apply inline-flex items-center justify-center gap-2 font-semibold text-center no-underline transition-all duration-300 cursor-pointer bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 dark:from-neutral-100 dark:via-neutral-200 dark:to-neutral-100 text-white dark:text-neutral-900;
+        padding: var(--btn-py, 0.875rem) var(--btn-px, 1.5rem);
         font-size: var(--btn-font-size, 0.875rem);
-        border-radius: var(--btn-border-radius, 0.5rem);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        border-radius: var(--btn-border-radius, 0.75rem);
+        box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.12), 0 2px 6px -1px rgba(0, 0, 0, 0.08), inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
         position: relative;
         overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
 
         &::before {
             content: '';
@@ -92,12 +138,25 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
+            transition: left 0.6s ease;
+        }
+        
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
         }
 
         &:hover {
-            @apply shadow-lg;
-            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.2), 0 4px 10px -2px rgba(0, 0, 0, 0.12), inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
         }
 
         &:hover::before {
@@ -105,35 +164,40 @@
         }
 
         &:active {
-            @apply scale-100;
             transform: translateY(0);
+            box-shadow: 0 2px 8px -1px rgba(0, 0, 0, 0.15), inset 0 1px 2px 0 rgba(0, 0, 0, 0.1);
         }
 
         &:disabled {
             @apply cursor-default text-neutral-400 bg-neutral-300 dark:bg-neutral-700 dark:text-neutral-500;
             transform: none;
+            box-shadow: none;
         }
     }
 
     .btn-lg {
-        --btn-font-size: 1.125rem;
-        --btn-px: 1.75rem;
-        --btn-py: 1.25rem;
-        @apply shadow-xl;
+        --btn-font-size: 1rem;
+        --btn-px: 2rem;
+        --btn-py: 1rem;
+        --btn-border-radius: 1rem;
     }
 
     .input {
-        @apply px-4 py-3 text-sm border rounded-lg border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 focus:outline-none transition-all duration-200;
+        @apply px-4 py-3 text-sm border rounded-xl border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 focus:outline-none transition-all duration-200;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
         &:focus {
             border-color: var(--color-accent);
-            box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-accent) 20%, transparent);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+        &:hover:not(:focus) {
+            border-color: var(--color-accent-light);
         }
     }
 
     @keyframes fadeInUp {
         from {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
         }
         to {
             opacity: 1;
@@ -149,15 +213,47 @@
             opacity: 1;
         }
     }
+    
+    @keyframes scaleIn {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
 
     .animate-fade-in-up {
         opacity: 0;
-        animation: fadeInUp 0.6s ease-out forwards;
+        animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .animate-fade-in {
         opacity: 0;
         animation: fadeIn 0.8s ease-out forwards;
+    }
+    
+    .animate-scale-in {
+        opacity: 0;
+        animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    
+    .animate-slide-in-right {
+        opacity: 0;
+        animation: slideInRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     @keyframes spin-slow {
@@ -171,6 +267,19 @@
 
     .animate-spin-slow {
         animation: spin-slow 3s linear infinite;
+    }
+    
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+    
+    .animate-float {
+        animation: float 3s ease-in-out infinite;
     }
 
     .diff {
